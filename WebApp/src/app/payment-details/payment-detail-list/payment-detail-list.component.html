@@ -1,0 +1,29 @@
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Searching Card Owner Name..."
+        name="NameSearch" [(ngModel)]="NameSearch" (ngModelChange)="Searching()"
+    >
+  </div>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Card Owner Name</th>
+            <th>Card Number</th>
+            <th>Expiration Date</th>
+            <th>CVV</th>
+            <th>Option</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of service.list">
+            <td (click)="populateForm(data)">{{data.CardOwnerName}}</td>
+            <td (click)="populateForm(data)">{{data.CardNumber}}</td>
+            <td (click)="populateForm(data)">{{data.ExpirationDate}}</td>
+            <td (click)="populateForm(data)">{{data.CVV}}</td>
+            <td>
+                <button (click)="onDelete(data.PMId)" class="color" mat-mini-fab aria-label="Example icon button with a filter list icon">
+                    <mat-icon>restore_from_trash</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
